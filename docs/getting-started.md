@@ -1,7 +1,10 @@
 ## System requeriments
 
-- PHP 7.0 or higher
+- PHP 7.4 or higher
+- - GMP and PECL intl extensions must be enabled
+- - (optional) OPcache should be enabled
 - Apache, Nginx or Litespeed
+- Valid strict SSL certificate
 
 ## Installing
 
@@ -18,6 +21,8 @@ After that, let's start configuring the server. Clone the configuration file usi
     cd ./src/system/application/Config
     cp config.php.example config.php
 
+> Note: you must put the directory root of your HTTP server to `/src`
+
 With this, we will have the configuration file that will define configuration constants of the server that is running.
 
-To read the configuration file documentation, see the [configuration file](/configuration)
+To read about the configuration file documentation, see the [configuration file](/configuration)

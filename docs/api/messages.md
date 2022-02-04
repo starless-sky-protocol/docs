@@ -4,14 +4,19 @@ This topic explains how the API works with messages on the network.
 
 ## Sending a message
 
-To send a message to a public key on the network, use the following endpoint:
+To send a message to a public key on the network, use the following endpoint. You can send one message to one or multiple pubilc keys at once (multicast).
 
     POST /messages
 
 ```json
 {
     "private_key": "<from_private_key>",
-    "public_key": "<to_public_key>",
+    "public_keys": [
+		"0xaaaabbbbcccdddd",
+		"0xaaaabbbbcccdddd",
+		"0xaaaabbbbcccdddd"
+		...
+	],
 
     "message": {
         "subject": "Important encrypted message",
@@ -21,7 +26,7 @@ To send a message to a public key on the network, use the following endpoint:
 ```
 
 where:
-- `public_key`: sets the recipient's public key. Sending a message to a random public key is like sending a message to the wind.
+- `public_keys`: sets the recipients public keys.
 - `private_key`: sets the sender's private key. It is used to show the origin of the message (by sending its public key). This field is optional when [`ALLOW_NOT_IDENTIFIED_SENDERS`](/configuration) is `false`.
 - `message.subject`: It's the subject of the message. Ideally, it should be like the subject of an email: brief and short.
 - `message.content`: It's the content of the message. It is always plain text, it is never interpreted by the recipient (or at least it shouldn't be).
@@ -40,7 +45,11 @@ Example successfully response:
 	"response": {
 		"pair": {
 			"from": "0x2220b996f0f72a4574cbc4a9cdf0cf083565e23ff289d5dd9c808de91ae6238f",
-			"to": "0x9f992889e413574676fccccd5307561ab589a5b903b14c60e28414ce609873b3"
+			"to": [
+				"0xaaaabbbbcccdddd",
+				"0xaaaabbbbcccdddd",
+				"0xaaaabbbbcccdddd"
+			]
 		},
 		"message_length": "20 bytes",
 		"id": "61f769423558a1000u19r",
@@ -139,7 +148,7 @@ Example response:
 		},
 		"pair": {
 			"from": "0x053470de85cf0174258759526e08aeca764271db393a9e4d430455c2da12492b",
-			"to": "0x6593f4efda015252eea73d0ce55fee5c2a652fc6815c493b665c0679c60548da"
+			"to": [...]
 		},
 		"size": "572 bytes",
 		"message": {
@@ -152,7 +161,7 @@ Example response:
 
 ## Edit message
 
-Use this route to edit the message after it has been sent to the receiver. It can only be used by the sender of the message and only if [`information.allow_message_edit`](/configuration) is enabled on the network.
+Use this route to edit the message after it has been sent to receivers. It can only be used by the sender of the message and only if [`information.allow_message_edit`](/configuration) is enabled on the network.
 
 > Note: using this route the `manifest.is_modified` attribute of the message manifest will be changed to `true` and a new digest hash will be calculated for the new message. The message SkyID remains preserved.
 
@@ -179,7 +188,7 @@ The response, when successful, has an identical structure to a message sending.
 
 ## Delete message
 
-Use this method for the receiver permanently delete an incoming message in their public key. This method can be used by both ends of the message, as sender and receiver, and the message is deleted for both ends.
+Use this method for the receiver permanently delete an incoming message in their public key. This method can be used by both ends of the message, as sender and receiver. If one receiver deletes the message, it only deletes to itself. If the sender deletes the message, it will be deleted to all receivers.
 
 > Note: this method only works if [`information.allow_message_deletion`](/configuration) is enabled on the server.
 

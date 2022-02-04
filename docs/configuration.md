@@ -42,6 +42,10 @@ Your configuration file is located at `src/system/application/Config/config.php`
 
    The sender's public key is sent to the receiver when the sender's private key is used in the message. The sender's private key is never revealed to the receiver.
 
+- `information.multicast_max_receivers` (int)
+
+   Defines the maximum number of recipients a message can be sent to.
+
 - `information.allow_message_edit` (boolean)
 
    Allows the sender to edit their message after sending it to the receiver. Only the sender can edit your message when it was sent using a private key. It is not possible to identify the origin of a message if it does not have a private key in its submission.
