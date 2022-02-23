@@ -18,11 +18,11 @@ Example response:
 	"messages": [
 		{
 			"level": "info",
-			"message": "Keypair successfully generated"
+			"message": "Unique keypair successfully generated for this network"
 		}
 	],
 	"response": {
-		"private_key": "xT6pLrTV3LisxAe2t64MYy299LMiMJ3vvxYIRunvS2RZE0j2ODuJDhIBArt+FBYDfOrzQVfQN+Lj+VViFoLuzb9qmpYWxAcndKb5q7Vh\/2uYD+3YzOj4i9eNCxXnnk6e+aweWExxsFI9ZnEfRH8UHa44b55sf6ztNMm6blCvoU6Kx+d85gfPXHgK9S++RhaowlPkXwk8imWSMkEOOC7Yc66dnDtIRn6DmXDVvFXKDwuoSf7Gnu6dsBu0k02N9D+t+IdxIZ+yw2msAjnQWHgglrZ9x90JIC3bAUsYfLdvv3gkSZBWFuU2XzSmB3I0QsrRsKheKha1X78nlgDNExv0Qg==",
+		"private_key": "<-- private key -->",
 		"public_key": "0x9f992889e413574676fccccd5307561ab589a5b903b14c60e28414ce609873b3"
 	}
 }
@@ -55,16 +55,23 @@ Example response:
 
 ```json
 {
-	"success": true,
+	"success": false,
 	"messages": [
 		{
-			"level": "info",
-			"message": "Network Identity info modified"
+			"level": "error",
+			"message": "Cannot modify network identity info"
+		},
+		{
+			"level": "error",
+			"message": "Cannot authenticate the provided private key"
 		}
 	],
 	"response": {
-		"name": "Alessandro Dias",
-		"biography": "This is my biography!"
+		"public_info": {
+			"name": "",
+			"biography": ""
+		},
+		"public_address": "0x901dff45493ddce8271fcef40e709a35740790447ef91e24e391e48a3f748d1fff50c05ab3174356a5ba7868b5dd5e390cdb1ea2a9c9ea5a2a498b8234f594f3"
 	}
 }
 ```
@@ -73,11 +80,11 @@ Example response:
 
 Use this route to get information about a public key present on the network. Note that not all public keys will return information, even if they have messages circulating on the network. Identity on the server is completely optional.
 
-    GET /identity
+    VIEW /identity
 
 ```json
 {
-	"public_key": "..."
+	"public_keys": ["...", "...", "..."]
 }
 ```
 
@@ -95,10 +102,29 @@ Example response:
 			"message": "Network Identity info modified"
 		}
 	],
-	"response": {
-		"name": "Alessandro Dias",
-		"biography": "This is my biography!"
-	}
+	"response": [
+		{
+			"public_key": "...",
+			"status": "found",
+			"identity": {
+				"name": null,
+				"biography": null
+			},
+			"attributes": [
+				"signed"
+			]
+		},
+		{
+			"public_key": "...",
+			"status": "not_found",
+			"identity": {
+				"name": null,
+				"biography": null
+			},
+			"attributes": []
+		},
+		...
+	]
 }
 ```
 

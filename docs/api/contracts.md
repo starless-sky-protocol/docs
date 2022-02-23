@@ -57,7 +57,7 @@ Example response:
 
 Gets information about one generated contract. The contract can only be accessed by the issuer or the receiver.
 
-    GET /sign/<id>
+    VIEW /sign/<id>
 
 ```json
 {
@@ -78,7 +78,7 @@ where:
 
 This method is used to get received or sent contracts through the holder's private key.
 
-    GET /sign
+    LIST /sign
 
 ```json
 {

@@ -14,25 +14,10 @@ Your configuration file is located at `src/system/application/Config/config.php`
    
    > Do not enter protocol information such as "https" or '/' slashes.
 
-- `crypto.base_hmac_key` (string)
+- `crypto_key` (string)
 
-   It's a unique network key that will be used to sign the HMAC codes generated on the platform.
+   It's a unique network key that will be used as a salt to encrypt and decrypt information on the protocol.
 
-- `crypto.base_symetric_key` (string)
-
-   It's an information that will be keyed to the symmetric key whenever any data is encrypted or decrypted. This information will never be used without any variable key, always accompanied by a non-static member in the encryption.
-
-- `crypto.base_symetric_iv_seed` (string)
-
-   It's the initialization vector of the symetric cryptographic functions. Must be a string with a fixed length of 16 characters.
-
-- `crypto.private_key_server_id` (string)
-
-   It's the initialization vector of the private keys. All private keys will be generated from this vector and they will include an encrypted manifest in their information. Every private key that will access the network must have the network manifest, otherwise it will be prevented from being used.
-
-- `crypto.skyid_instance` (string)
-
-   The instance of a SkyID is a static identifier that will become a SkyID ID. The ideal is a value between 1 to 5 digits maximum. Larger values are concatenated into your ID and have no significance in it's function. For more information, read about skyid in this documentation.
 
 ## Network Information
 

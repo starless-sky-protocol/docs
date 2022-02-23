@@ -4,6 +4,8 @@
 
 ## What is the Starless Sky Protocol?
 
+> **Warning:** this is technical documentation and may be difficult to understand for intermediate users. If you want to read more basic documentation, visit the end-user documentation.
+
 Starless Sky is a network protocol for secure identities, providing the use of assymetric identities, public information, end-to-end messaging and smart contracts. The system consists of an identity holder having two keys, the private and the public, where through the private one he controls who he is on the network and the public one he allows to be exposed to receive messages, contracts or provide information about who he is.
 
 It also has an one-to-many messaging connection protocol written that maintains data integrity and has unique and advanced encryption features. Its construction consists of RESTful APIs that do not depend of a database to function. The relationship of information is made by hashes calculations and asymmetric cryptography, where the holder of the private key has a public key that is used to receive the messages.

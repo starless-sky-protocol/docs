@@ -64,12 +64,12 @@ This method is used to get received or sent messages through the holder's privat
 
 > Note: each message on the response trims out the first 30 characters of each message as a preview only. To read each complete message, consider calling a complete message read endpoint.
 
-    GET /messages
+    LIST /messages
 
 ```json
 {
     "private_key": "<owner_private_key>",
-    "folder": "inbox",
+    "folder": "inbox|sent",
     "pagination_data": {
         "skip": 0,
         "take": 50
@@ -120,7 +120,7 @@ Example response:
 
 This method is used to read a sent or received message. When it is an incoming message, the private key must belong to its recipient. When sent, the private key must belong to the sender. The messages are identical for both ends.
 
-    GET /messages/<id>
+    VIEW /messages/<id>
 
 ```json
 {
