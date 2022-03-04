@@ -57,6 +57,10 @@ new Docute({
                 {
                     title: 'The SkyID',
                     link: '/skyid'
+                },
+                {
+                    title: 'Storage',
+                    link: '/storage'
                 }
             ]
         },

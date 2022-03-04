@@ -1,4 +1,6 @@
-![aa](https://i.imgur.com/69IIaFR.png)
+<div class="img-wrapper-lg">
+    <img src="/img/69IIaFR.png" />
+</div>
 
 <p align=center>Descentralized network protocol providing smart identity over an secure layer.</p>
 
