@@ -10,7 +10,11 @@ new Docute({
             accentColor: "#62448f",
             headerTextColor: "#62448f",
             linkColor: "#62448f",
-            codeFont: "Cascadia Code,SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace"
+            codeFont: "Cascadia Code,SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace",
+            codeBlockBackground: "#f7f7f7",
+            codeBlockTextColor: "#353535",
+            inlineCodeBackground: "rgb(239 239 239)",
+            inlineCodeColor: "#353535",
         }
     },
     sidebar: [
@@ -89,7 +93,7 @@ new Docute({
                 }
             ]
         },
-        {
+        /*{
             title: '.NET SDK API',
             links: [
                 {
@@ -109,6 +113,6 @@ new Docute({
                     link: '/dotnet-sdk/messages'
                 }
             ]
-        }
+        }*/
     ]
 })

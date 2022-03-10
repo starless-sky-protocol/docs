@@ -1,0 +1,31 @@
+.token.property {
+    color: #353535
+}
+
+.token.punctuation, .token.operator {
+    color: #5c5c5c
+}
+
+.token.string {
+    color: #bf473a
+}
+
+.token.boolean {
+    color: #0037ff
+}
+
+.token.number {
+    color: #5b6d3a
+}
+
+.token.keyword {
+    color: #0037ff
+}
+
+.page-content pre code {
+    font-size: 0.8em;
+}
+
+.page-content .pre-wrapper:before {
+    color: #9d9d9d
+}

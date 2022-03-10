@@ -29,7 +29,7 @@ With a private key it is possible to calculate your public key, but with a publi
 - Anonymous and custom identities without revealing the real identity of the keypair holder;
 - Based on symmetric and asymmetric encryption, no information is stored in plain text in the network storage.
 - Keys and values are never stored directly in the network storage;
-- Fast and instant content delivery network - no network authenticity required;
+- Fast and instant content delivery network with hybrid Blockchain validation;
 - Easy implementation and use.
 - It is naturally impossible to spoof information.
 
@@ -37,7 +37,7 @@ With a private key it is possible to calculate your public key, but with a publi
 
 There is no perfect system, but there are procedures that make a network secure enough to don't have problems in the future. This system uses the latest encryption technologies and tends to be secure.
 
-Read `doc/considerations.md` to understand the best security practices for a network that can store identities.
+Read the [Security Considerations](/#/considerations) to understand the best security practices for a network that can store identities.
 
 ## Documentation
 

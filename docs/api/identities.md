@@ -6,8 +6,42 @@ Use this topic for dedicated routes for keys and key pairs.
 
 Use this route to generate a cryptographically secure key pair.
 
+Command:
+
+    identity.gen-private-key
+
+Example response:
+
+```json
+{
+	"success": true,
+	"messages": [
+		{
+			"level": "info",
+			"message": "Unique keypair successfully generated for this network"
+		}
+	],
+	"response": {
+		"private_key": "<-- private key -->",
+		"public_key": "0x9f992889e413574676fccccd5307561ab589a5b903b14c60e28414ce609873b3"
+	}
+}
 ```
-GET /identity/generate-keypair
+
+## Authenticate Private Key
+
+Use this route to verify if a private key authenticates to the server.
+
+Command:
+
+    identity.auth
+
+Body:
+
+```json
+{
+	"private_key": "------ PRIVATE KEY-----"
+}
 ```
 
 Example response:
@@ -34,7 +68,11 @@ Use this route to define public information about who you are on the network usi
 
 > The content must be smaller than [`MESSAGE_MAX_SIZE`](/configuration).
 
-    POST /identity
+Command:
+
+    identity.set-public-info
+
+Body:
 
 ```json
 {
@@ -80,7 +118,11 @@ Example response:
 
 Use this route to get information about a public key present on the network. Note that not all public keys will return information, even if they have messages circulating on the network. Identity on the server is completely optional.
 
-    VIEW /identity
+Command:
+
+    identity.get-public-info
+
+Body:
 
 ```json
 {
@@ -89,7 +131,7 @@ Use this route to get information about a public key present on the network. Not
 ```
 
 where:
-- `public_key`: the public key of who you want to see information about.
+- `public_key`: the public keys array with who you want to see information about.
 
 Example response:
 
@@ -134,7 +176,11 @@ Use this route to delete your public identity information on the server.
 
 > Note: this route does not delete other network informations such as contracts, messages, etc.
 
-    DELETE /identity
+Command:
+
+	identity.delete-public-info
+
+Body:
 
 ```json
 {

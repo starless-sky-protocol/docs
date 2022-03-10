@@ -1,6 +1,6 @@
 ## System requeriments
 
-- PHP 7.4 or higher
+- PHP 8.0 or higher
 - - GMP and PECL intl extensions must be enabled
 - - (optional) OPcache should be enabled
 - Apache, Nginx or Litespeed

@@ -1,6 +1,12 @@
 # Starless Sky API reference
 
-The Starless Sky API allows the client to communicate with the network running Starless Sky. All requests must be made in JSON format, and responses will always follow this format:
+The communication protocol between a client and a Starless Sky network must be carried by RESTful data transport. This type of transport includes the command and the request body, which facilitates integration with any environment.
+
+All calls must be made using the `HTTP POST` method, passing the command as the only argument in the URL, such as the command to send message `message.send` on Starless Sky's Mainnet:
+
+    POST https://mainnet.starless-sky.org/message.send
+
+After sending the body in JSON, this is an expected response:
 
 ```json
 {

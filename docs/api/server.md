@@ -6,7 +6,9 @@ This topic covers routes relating to the server and it's network in general.
 
 Use this route to get useful information about the network.
 
-    GET /ping
+Command:
+
+    server.ping
 
 Example response:
 
@@ -34,7 +36,9 @@ Example response:
 
 Use this route to get a list of blocks that have been calculated and closed on the network.
 
-    GET /bc/list
+Command:
+
+    server.bc.list
 
 Example response:
 
@@ -63,7 +67,17 @@ Example response:
 
 Use this route to read the transactions and contents of a block.
 
-    GET /bc/read/<block-name>
+Command:
+
+    server.bc.read
+
+Body:
+
+```json
+{
+	"block": "block-id"
+}
+```
 
 Example response:
 

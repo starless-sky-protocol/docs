@@ -6,7 +6,11 @@ Use these functions to issue, verify and validate smart contracts on the Starles
 
 Use this function to issue a contract request with your identity to a public identity.
 
-    POST /sign
+Command:
+
+    contract.send
+
+Body:
 
 ```json
 {
@@ -57,10 +61,15 @@ Example response:
 
 Gets information about one generated contract. The contract can only be accessed by the issuer or the receiver.
 
-    VIEW /sign/<id>
+Command:
+
+    contract.read
+
+Body:
 
 ```json
 {
+	"id": "<contract-id>",
     "private_key": "<issuer-private-key>"
 }
 ```
@@ -78,7 +87,11 @@ where:
 
 This method is used to get received or sent contracts through the holder's private key.
 
-    LIST /sign
+Command:
+
+    contract.list
+
+Body:
 
 ```json
 {
@@ -131,10 +144,15 @@ Example response:
 
 Use this function for the contract receiver to make a decision about the contract. Decisions include signing or rejecting.
 
-    POST /sign/<id>
+Command:
+
+    contract.opt
+
+Body:
 
 ```json
 {
+	"id": "<contract-id>",
 	"private_key": "<signer-private-key>",
     "term": "sign"
 }

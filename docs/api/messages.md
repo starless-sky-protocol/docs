@@ -6,7 +6,11 @@ This topic explains how the API works with messages on the network.
 
 To send a message to a public key on the network, use the following endpoint. You can send one message to one or multiple pubilc keys at once (multicast).
 
-    POST /messages
+Command:
+
+    message.send
+
+Body:
 
 ```json
 {
@@ -64,7 +68,11 @@ This method is used to get received or sent messages through the holder's privat
 
 > Note: each message on the response trims out the first 30 characters of each message as a preview only. To read each complete message, consider calling a complete message read endpoint.
 
-    LIST /messages
+Command:
+
+    message.list
+
+Body:
 
 ```json
 {
@@ -120,16 +128,21 @@ Example response:
 
 This method is used to read a sent or received message. When it is an incoming message, the private key must belong to its recipient. When sent, the private key must belong to the sender. The messages are identical for both ends.
 
-    VIEW /messages/<id>
+Command:
+
+    message.read
+
+Body:
 
 ```json
 {
+	"id": "<message-id>",
     "private_key": "<private_key>"
 }
 ```
 
 where:
-- `id`: a parameter in the URL that is the ID of the message that will be returned.
+- `id`: the ID of the message that will be returned.
 - `private_key`: the private key of the message receiver or sender.
 
 Example response:
@@ -165,10 +178,15 @@ Use this route to edit the message after it has been sent to receivers. It can o
 
 > Note: using this route the `manifest.is_modified` attribute of the message manifest will be changed to `true` and a new digest hash will be calculated for the new message. The message SkyID remains preserved.
 
-    PUT /messages/<id>
+Command:
+
+    message.edit
+
+Body:
 
 ```json
 {
+	"id": "<message-id>",
 	"private_key": "<from-private-key>",
 	
 	"message": {
@@ -179,7 +197,7 @@ Use this route to edit the message after it has been sent to receivers. It can o
 ```
 
 where:
-- `id`: a parameter in the URL that is the ID of the message that will be edited.
+- `id`: the ID of the message that will be edited.
 - `private_key`: the private key of the message sender.
 - `message.subject`: The new message subject.
 - `message.content`: The new message content.
@@ -192,16 +210,21 @@ Use this method for the receiver permanently delete an incoming message in their
 
 > Note: this method only works if [`information.allow_message_deletion`](/configuration) is enabled on the server.
 
-    DELETE /messages/<id>
+Command:
+
+    message.delete
+
+Body:
 
 ```json
 {
+	"id": "<message-id>",
     "private_key": "<private-key>"
 }
 ```
 
 where:
-- `id`: a parameter in the URL that is the ID of the message that will be permanently deleted.
+- `id`: the ID of the message that will be permanently deleted.
 - `private_key`: the private key of the message receiver or sender.
 
 Example response:
