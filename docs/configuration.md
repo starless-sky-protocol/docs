@@ -18,6 +18,9 @@ Your configuration file is located at `src/system/application/Config/config.php`
 
    It's a unique network key that will be used as a salt to encrypt and decrypt information on the protocol.
 
+- `blockchain_close_key` (string)
+
+   The symmetric key used to close the open block remotely.
 
 ## Network Information
 

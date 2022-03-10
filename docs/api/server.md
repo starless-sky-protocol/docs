@@ -109,3 +109,38 @@ Example response:
 	"transaction": null
 }
 ```
+
+## Flush transactions to block
+
+Use this route to close all open transactions and close the block on the Blockchain network.
+
+Command:
+
+    server.bc.flush
+
+Body:
+
+```json
+{
+	"blockchain_close_key": "..."
+}
+```
+
+where:
+- `blockchain_close_key`: The network symmetric key to close the block. It is defined in the [network configuration](/#/configuration).
+
+Example response:
+
+```json
+{
+	"success": true,
+	"messages": [
+		{
+			"level": "info",
+			"message": "Current transactions block flushed"
+		}
+	],
+	"response": null,
+	"transaction": null
+}
+```
