@@ -17,6 +17,7 @@ Body:
 	"private_key": "<from-private-key>",
 	"public_key": "<to-public-key>",
     "message": "Authorize login at foobar.com...",
+	"title": "Contract title",
     "expires": 3600
 }
 ```
@@ -25,6 +26,7 @@ where:
 - `private_key`: the private key of the contract issuer;
 - `public_key`: the public key of the target signer;
 - `message`: the contract content message. It should be smaller than `information.sign_message_max_size`.
+- `title`: the contract's title. It should be smaller than `information.sign_message_max_size`.
 - `expires`: the time in seconds for the contract to expire if the recipient does not sign the message. If the value is lesser than `information.sign_max_expiration`, the server's default sign maximum expiration time will be used.
 
 Example response:
@@ -43,6 +45,7 @@ Example response:
 		"issued": 1643488930,
 		"expires": 3600,
 		"message": "Authorize login at foobar.com...",
+		"title": "Contract title",
 		"issuer": {
 			"public_key": "0x943ac28422beb80a4a096b8a427222798050c56d50d728541edfb33ce5e6d7f0"
 		},
@@ -133,6 +136,7 @@ Example response:
 				"from": "0x943ac28422beb80a4a096b8a427222798050c56d50d728541edfb33ce5e6d7f0",
 				"to": "0x6cedd7e13f237a4617f00f895fac9d7e79615538c1a8d98b15aa437b2caddf2e",
 				"message": "Please sign this message",
+				"title": "Contract title",
 				"sign_status": false
 			}
 		]
